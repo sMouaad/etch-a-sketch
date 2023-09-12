@@ -1,0 +1,22 @@
+.flex-container{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sketch{
+    border: solid blue;
+    width:500px;
+    flex-wrap: wrap;
+}
+.square{
+    box-sizing: border-box;
+}
+.wrap-reverse{
+    flex-wrap:wrap-reverse;
+    gap:8px;
+}
+.column{
+    flex-direction: column;
+    gap:8px;
+}
