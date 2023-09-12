@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/styles.css">
-    <script src="./assets/script.js" defer></script>
+    <script type="text/javascript" src="./assets/script.js" defer></script>
+    <script type="text/javascript" src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
     <title>Etch-a-Sketch</title>
 </head>
 <body>
     <div class="wrap-reverse flex-container">
         <div class="flex-container column">
-            <div><button>Function</button></div>
-            <div><button>Function</button></div>
-            <div><button>Function</button></div>
-            <div><button>Function</button></div>
-            <div><button>Function</button></div>
+            <div><button>Color</button></div>
+            <div><button onclick=setDrawingMode(drawRainbow)>Rainbow</button></div>
+            <div><button>Fade</button></div>
+            <div><button>Eraser</button></div>
+            <div><button onclick=clearSketch()>Clear</button></div>
+            <div><button onclick=screenshot()>Download Sketch</button></div>
         <div class="slidecontainer">
-            <input type="range" min="8" max="128" value="16" class="slider">
+            <input type="range" min="8" max="64" value="16" class="slider">
           </div>
         </div>
         <div class="sketch flex-container"></div>
