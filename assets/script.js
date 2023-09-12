@@ -1,9 +1,35 @@
+
+// ----/!\ order of declaration is important ----
+
 const container = document.querySelector(".sketch")
-//container.style.height = `${container.clientWidth}px`;
+const slider = document.querySelector(".slider")
+//container.style.height = `${container.clientWidth}px`;  // for dynamic resizing of the grid
 
 let div;
 let SIZE = 16;
 
+initializeSketch(SIZE);
+const squares = document.querySelectorAll(".square");
+
+//Initializing drawing mode to black color
+setDrawingMode(drawBlack);
+
+//functions ----------------------
+function setDrawingMode(drawingMode){
+    squares.forEach((square)=>{
+        square.addEventListener("mousedown",(e)=>{
+            e.target.style.backgroundColor = "black";
+            squares.forEach((square)=>{
+                square.addEventListener("mouseover",drawingMode);
+            })
+        })
+        square.addEventListener("mouseup",()=>{
+            squares.forEach((square)=>{
+                square.removeEventListener("mouseover",drawingMode)
+            })
+        })
+    })
+}
 
 function initializeSketch(SIZE){
     let squareLength = container.clientWidth/SIZE;
@@ -16,26 +42,9 @@ function initializeSketch(SIZE){
         container.append(div);
     }
 }
-initializeSketch(SIZE);
-const squares = document.querySelectorAll(".square");
-
 function drawBlack(e){
     e.target.style.backgroundColor = "black";
 }
-
-squares.forEach((square)=>{
-    square.addEventListener("mousedown",(e)=>{
-        e.target.style.backgroundColor = "black";
-        squares.forEach((square)=>{
-            square.addEventListener("mouseover",drawBlack);
-        })
-    })
-    square.addEventListener("mouseup",()=>{
-        squares.forEach((square)=>{
-            square.removeEventListener("mouseover",drawBlack)
-        })
-    })
-})
 
 function resizeGrid(){
     container.style.height = `${container.clientWidth}px`;
@@ -47,6 +56,9 @@ function resizeGrid(){
     })
     console.log(squareLength);
 }
+
+
+
 // window.addEventListener("resize",()=>{
-//     resizeGrid();
+//     resizeGrid();                                             //for dynamic resizing of the grid
 // });

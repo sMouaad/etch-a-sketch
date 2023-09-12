@@ -1,3 +1,8 @@
+*{
+    -webkit-user-drag: none;
+    user-select: none;
+}
+
 .flex-container{
     display:flex;
     justify-content: center;
