@@ -2,7 +2,9 @@
     -webkit-user-drag: none;
     user-select: none;
 }
-
+body{
+    background: rgb(235, 234, 234);
+}
 .flex-container{
     display:flex;
     justify-content: center;
@@ -13,6 +15,7 @@
     box-shadow: 0px 1px 8px 0px grey;
     width:500px;
     flex-wrap: wrap;
+    background-color: white;
 }
 .square{
     box-sizing: border-box;
@@ -47,4 +50,5 @@
 .title{
     text-align:center;
     font-size: 50px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

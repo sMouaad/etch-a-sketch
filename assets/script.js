@@ -37,16 +37,6 @@ function changeDrawingMode(mode){
     drawingMode = mode;
 }
 function setDrawingMode(){
-    window.addEventListener("mousedown",()=>{
-        squares.forEach((square)=>{
-            square.addEventListener("mouseover",drawingMode);
-        })
-    })
-    window.addEventListener("mouseup",()=>{
-        squares.forEach((square)=>{
-            square.removeEventListener("mouseover",drawingMode);
-        })
-    })
     squares.forEach((square)=>{
         square.addEventListener("mousedown",(e)=>{
             drawingMode(e)
@@ -74,7 +64,17 @@ function setDrawingMode(){
         })
         container.removeEventListener("mouseenter",enterWindow);
     };
-    //stops drawing when mouse outside sketch
+    window.addEventListener("mousedown",()=>{
+        squares.forEach((square)=>{
+            square.addEventListener("mouseover",drawingMode);
+        })
+    })
+    window.addEventListener("mouseup",()=>{
+        squares.forEach((square)=>{
+            square.removeEventListener("mouseover",drawingMode);
+        })
+        container.removeEventListener("mouseenter",enterWindow);
+    })
 }
 
 
