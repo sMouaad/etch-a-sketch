@@ -37,8 +37,15 @@ function screenshot() {
     });
 };
 
+function clearClass(){
+    let choice = document.querySelectorAll(".choice")
+    choice.forEach((c)=>{
+        c.classList.remove("choice");
+    })
+}
 
 function changeDrawingMode(mode){
+    clearClass();
     if(drawingMode!== drawRainbow && mode===drawRainbow){
         rainbowButton.parentElement.classList.add("choice")
         rainbowButton.src="./assets/rainbow.gif"
@@ -49,6 +56,12 @@ function changeDrawingMode(mode){
     else if(drawingMode === drawRainbow){
         rainbowButton.src="./assets/rainbow.png"
         initializeRainbowButton();
+    }
+    if(mode===drawColor){
+        colorPicker.parentElement.classList.add("choice");
+    }
+    if(mode===eraser){
+        ERASER.classList.add("choice");
     }
     drawingMode = mode;
 }
