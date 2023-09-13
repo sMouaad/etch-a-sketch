@@ -83,7 +83,8 @@ button{
     cursor:pointer;
 }
 .choice{
-    border-bottom: solid 3px cadetblue;
+    transition:1s;
+    border-bottom: solid 4px cadetblue;
     border-radius: 10px;
 }
 
@@ -107,6 +108,7 @@ button{
 }
 .options{
     width:150px;
+    gap:8px;
 }
 .wrap{
     flex-wrap:wrap;
