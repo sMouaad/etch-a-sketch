@@ -3,7 +3,10 @@
 
 const container = document.querySelector(".sketch")
 const slider = document.querySelector(".slider")
-const colorPicker = document.querySelector("#colorpicker");
+const colorPicker = document.getElementById("colorpicker");
+const rainbowButton = document.getElementById("rainbow")
+const ERASER = document.getElementById("eraser")
+const h1 = document.querySelector("h1");
 //container.style.height = `${container.clientWidth}px`;  // for dynamic resizing of the grid
 
 let div;
@@ -12,12 +15,18 @@ let squares;
 let drawingMode = drawColor;
 
 initializeSketch();
+
 slider.addEventListener("input",(e)=>{
     SIZE = e.target.value;
+    h1.textContent=`${SIZE}x${SIZE}`
     initializeSketch();
     setDrawingMode(drawingMode);
 })
+initializeRainbowButton()
+//Initializing drawing mode to black color
 
+setDrawingMode();
+//functions ----------------------
 function screenshot() {
     html2canvas(container).then(canvas => {
         dataURL = canvas.toDataURL("image/png");  
@@ -29,11 +38,18 @@ function screenshot() {
 };
 
 
-//Initializing drawing mode to black color
-
-setDrawingMode();
-//functions ----------------------
 function changeDrawingMode(mode){
+    if(drawingMode!== drawRainbow && mode===drawRainbow){
+        rainbowButton.parentElement.classList.add("choice")
+        rainbowButton.src="./assets/rainbow.gif"
+        rainbowButton.removeEventListener("mouseenter",triggerGifAnimation)
+        rainbowButton.removeEventListener("mouseleave",stopGifANimation)
+        
+    }
+    else if(drawingMode === drawRainbow){
+        rainbowButton.src="./assets/rainbow.png"
+        initializeRainbowButton();
+    }
     drawingMode = mode;
 }
 function setDrawingMode(){
@@ -77,6 +93,16 @@ function setDrawingMode(){
     })
 }
 
+function triggerGifAnimation(){
+    rainbowButton.src="./assets/rainbow.gif"
+}
+function stopGifANimation(){
+    rainbowButton.src="./assets/rainbow.png"
+}
+function initializeRainbowButton(){
+    rainbowButton.addEventListener("mouseenter",triggerGifAnimation)
+    rainbowButton.addEventListener("mouseleave",stopGifANimation)
+}
 
 function initializeSketch(){
     container.innerHTML="";
@@ -97,6 +123,7 @@ function drawRainbow(e){
     e.target.style.backgroundColor = `rgb(${parseInt((Math.random()*1000))%255+1},${parseInt((Math.random()*1000))%255+1},${parseInt((Math.random()*1000))%255+1})`;
 }
 function eraser(e){
+
     e.target.style.backgroundColor = "";
 }
 function resizeGrid(){

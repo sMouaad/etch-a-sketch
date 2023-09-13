@@ -1,6 +1,7 @@
 *{
     -webkit-user-drag: none;
     user-select: none;
+    text-align: center;
 }
 body{
     background: rgb(235, 234, 234);
@@ -13,7 +14,7 @@ body{
 
 .sketch{
     box-shadow: 0px 1px 8px 0px grey;
-    width:500px;
+    width:525px;
     flex-wrap: wrap;
     background-color: white;
 }
@@ -26,7 +27,7 @@ body{
 }
 .column{
     flex-direction: column;
-    gap:8px;
+    gap:10px;
 }
 
 #colorpicker::-webkit-color-swatch {
@@ -40,15 +41,73 @@ body{
     padding: 0;
 } 
 #colorpicker {
+    transition:.3s;
     width: 100px;
     height: 100px; 
     background:none;
     border:none;
     overflow: hidden;
 }
-
+#colorpicker:hover{
+    height: 110px;
+    width: 110px;
+}
 .title{
     text-align:center;
     font-size: 50px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+img{
+    transition:.3s;
+    width:100px;
+    height:100px;
+}
+img:hover{
+    width:110px;
+    height:110px;
+}
+
+#eraser{
+    width:135px;
+    height:auto;
+    transition:.3s;
+    cursor:pointer;
+}
+
+#eraser:hover{
+    width:140px;
+    height:auto;
+}
+button{
+    cursor:pointer;
+}
+.choice{
+    border-bottom: solid 3px cadetblue;
+    border-radius: 10px;
+}
+
+#clear{
+    height:45px;
+    width: auto;
+    cursor: pointer;
+}
+#download{
+    height:70px;
+    width: auto;
+    cursor: pointer;
+}
+#clear:hover{
+    height: 55px;
+    width: auto;
+}
+#download:hover{
+    height: 80px;
+    width: auto;
+}
+.options{
+    width:150px;
+}
+.wrap{
+    flex-wrap:wrap;
 }
