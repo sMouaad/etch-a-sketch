@@ -11,17 +11,21 @@
 <body>
     <div class="wrap-reverse flex-container">
         <div class="flex-container column">
-            <div><button>Color</button></div>
-            <div><button onclick=setDrawingMode(drawRainbow)>Rainbow</button></div>
+            <div><button onclick=changeDrawingMode(drawColor)>Color</button></div>
+            <input type="color" id="colorpicker">
+            <div><button onclick=changeDrawingMode(drawRainbow)>Rainbow</button></div>
             <div><button>Fade</button></div>
-            <div><button>Eraser</button></div>
+            <div><button onclick=changeDrawingMode(eraser)>Eraser</button></div>
             <div><button onclick=clearSketch()>Clear</button></div>
             <div><button onclick=screenshot()>Download Sketch</button></div>
         <div class="slidecontainer">
             <input type="range" min="8" max="64" value="16" class="slider">
           </div>
         </div>
-        <div class="sketch flex-container"></div>
+        <div class="title">
+            Etch-a-Sketch
+            <div class="sketch flex-container"></div>
+        </div>
     </div>
 </body>
 </html>

@@ -3,12 +3,13 @@
 
 const container = document.querySelector(".sketch")
 const slider = document.querySelector(".slider")
+const colorPicker = document.querySelector("#colorpicker");
 //container.style.height = `${container.clientWidth}px`;  // for dynamic resizing of the grid
 
 let div;
 let SIZE = 16;
 let squares;
-let drawingMode = drawBlack;
+let drawingMode = drawColor;
 
 initializeSketch();
 slider.addEventListener("input",(e)=>{
@@ -29,10 +30,13 @@ function screenshot() {
 
 
 //Initializing drawing mode to black color
-setDrawingMode(drawingMode);
 
+setDrawingMode();
 //functions ----------------------
-function setDrawingMode(drawingMode){
+function changeDrawingMode(mode){
+    drawingMode = mode;
+}
+function setDrawingMode(){
     window.addEventListener("mousedown",()=>{
         squares.forEach((square)=>{
             square.addEventListener("mouseover",drawingMode);
@@ -45,7 +49,7 @@ function setDrawingMode(drawingMode){
     })
     squares.forEach((square)=>{
         square.addEventListener("mousedown",(e)=>{
-            e.target.style.backgroundColor = "black";
+            drawingMode(e)
             squares.forEach((square)=>{
                 square.addEventListener("mouseover",drawingMode);
             })
@@ -86,15 +90,14 @@ function initializeSketch(){
     }
     squares = document.querySelectorAll(".square");
 }
-function drawBlack(e){
-    e.target.style.backgroundColor = "black";
-}
 function drawColor(e){
-    e.target.style.backgroundColor = "black";
+    e.target.style.backgroundColor = colorPicker.value;
 }
 function drawRainbow(e){
     e.target.style.backgroundColor = `rgb(${parseInt((Math.random()*1000))%255+1},${parseInt((Math.random()*1000))%255+1},${parseInt((Math.random()*1000))%255+1})`;
-    console.log(((Math.random()*1000))%255)
+}
+function eraser(e){
+    e.target.style.backgroundColor = "";
 }
 function resizeGrid(){
     container.style.height = `${container.clientWidth}px`;
@@ -104,7 +107,6 @@ function resizeGrid(){
         square.style.width = `${squareLength}px`;
         square.style.height = `${squareLength}px`;
     })
-    console.log(squareLength);
 }
 
 function clearSketch(){
