@@ -80,12 +80,6 @@ function setDrawingMode(){
             })
         })
     })
-    function enterWindow(){
-        squares.forEach((square)=>{
-            square.addEventListener("mouseover",drawingMode)
-        })
-        container.removeEventListener("mouseenter",enterWindow);
-    };
     window.addEventListener("mousedown",()=>{
         squares.forEach((square)=>{
             square.addEventListener("mouseover",drawingMode);
@@ -95,7 +89,6 @@ function setDrawingMode(){
         squares.forEach((square)=>{
             square.removeEventListener("mouseover",drawingMode);
         })
-        container.removeEventListener("mouseenter",enterWindow);
     })
 }
 
