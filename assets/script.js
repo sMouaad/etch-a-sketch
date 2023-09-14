@@ -73,21 +73,13 @@ function setDrawingMode(){
             squares.forEach((square)=>{
                 square.addEventListener("mouseover",drawingMode);
             })
-            container.addEventListener("mouseleave",leaveWindow)
         })
         square.addEventListener("mouseup",()=>{
             squares.forEach((square)=>{
                 square.removeEventListener("mouseover",drawingMode)
             })
-            container.removeEventListener("mouseleave",leaveWindow);
         })
     })
-    function leaveWindow(){
-        squares.forEach((square)=>{
-            square.removeEventListener("mouseover",drawingMode)
-        })
-        container.addEventListener("mouseenter",enterWindow);
-    }
     function enterWindow(){
         squares.forEach((square)=>{
             square.addEventListener("mouseover",drawingMode)
