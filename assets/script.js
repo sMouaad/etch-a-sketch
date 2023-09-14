@@ -158,3 +158,31 @@ function clearSketch(){
 window.addEventListener("resize",()=>{
     resizeGrid();                                             //for dynamic resizing of the grid
 });
+
+
+
+
+//---------------------mobile devices support------------------------
+
+container.addEventListener("touchmove", function(e) {
+    let touch = e.touches[0];
+    let checkbox = document.elementFromPoint(touch.clientX, touch.clientY);
+    if (checkbox) {
+        if(checkbox.parentElement===container){
+            switch (drawingMode) {
+                case drawColor:
+                    checkbox.style.backgroundColor = colorPicker.value;
+                    break;
+                case drawRainbow:
+                    checkbox.style.backgroundColor = `rgb(${parseInt((Math.random()*1000))%255+1},${parseInt((Math.random()*1000))%255+1},${parseInt((Math.random()*1000))%255+1})`;
+                    break;
+                case eraser:
+                    checkbox.style.backgroundColor = "";
+                    break;
+                default:
+                    console.log("abnormality???");
+                    break;
+            }
+        }
+    }
+});
