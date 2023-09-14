@@ -7,7 +7,8 @@ const colorPicker = document.getElementById("colorpicker");
 const rainbowButton = document.getElementById("rainbow")
 const ERASER = document.getElementById("eraser")
 const h1 = document.querySelector("h1");
-//container.style.height = `${container.clientWidth}px`;  // for dynamic resizing of the grid
+
+container.style.height = `${container.clientWidth}px`;  // for dynamic resizing of the grid
 
 let div;
 let SIZE = 16;
@@ -15,6 +16,7 @@ let squares;
 let drawingMode = drawColor;
 
 initializeSketch();
+resizeGrid();
 
 slider.addEventListener("input",(e)=>{
     SIZE = e.target.value;
@@ -153,6 +155,6 @@ function clearSketch(){
     initializeSketch();
     setDrawingMode(drawingMode);
 }
-// window.addEventListener("resize",()=>{
-//     resizeGrid();                                             //for dynamic resizing of the grid
-// });
+window.addEventListener("resize",()=>{
+    resizeGrid();                                             //for dynamic resizing of the grid
+});
