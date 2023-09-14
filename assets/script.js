@@ -16,7 +16,6 @@ let squares;
 let drawingMode = drawColor;
 
 initializeSketch();
-resizeGrid();
 
 slider.addEventListener("input",(e)=>{
     SIZE = e.target.value;
@@ -130,6 +129,7 @@ function initializeSketch(){
         container.append(div);
     }
     squares = document.querySelectorAll(".square");
+    resizeGrid();
 }
 function drawColor(e){
     e.target.style.backgroundColor = colorPicker.value;
