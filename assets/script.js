@@ -165,6 +165,7 @@ window.addEventListener("resize",()=>{
 //---------------------mobile devices support------------------------
 
 container.addEventListener("touchmove", function(e) {
+    e.preventDefault();
     let touch = e.touches[0];
     let checkbox = document.elementFromPoint(touch.clientX, touch.clientY);
     if (checkbox) {
